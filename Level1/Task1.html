@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cognifyz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #161D1A;
+    --paper: #D9DED2;
+    --paper-light: #E8EBE0;
+    --safelight: #C6851F;
+    --fixer: #2B5C57;
+    --line: #B6BEA9;
+  }
+
+  * { box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', system-ui, sans-serif;
+    line-height:1.5;
+  }
+
+  h1, h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+  }
+
+  a{ color:inherit; }
+
+  /* ---- Nav ---- */
+  nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:24px 48px;
+    border-bottom:1px solid var(--line);
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.15rem;
+    font-weight:600;
+    letter-spacing:0.01em;
+  }
+  .brand span{ color:var(--safelight); }
+  .nav-links{
+    display:flex;
+    gap:36px;
+    list-style:none;
+    margin:0; padding:0;
+  }
+  .nav-links a{
+    text-decoration:none;
+    font-size:0.95rem;
+    padding-bottom:4px;
+    border-bottom:1px solid transparent;
+    transition:border-color 0.15s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{
+    border-color:var(--safelight);
+  }
+
+  /* ---- Hero ---- */
+  .hero{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+    padding:64px 48px;
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 4vw, 3rem);
+    line-height:1.15;
+    max-width:16ch;
+  }
+  .hero p{
+    max-width:46ch;
+    margin-top:20px;
+    font-size:1.05rem;
+    color:#3A362F;
+  }
+
+  /* film strip illustration */
+  .film{
+    background:var(--ink);
+    border-radius:6px;
+    padding:14px 0;
+    position:relative;
+  }
+  .film::before, .film::after{
+    content:"";
+    position:absolute;
+    left:0; right:0;
+    height:14px;
+    background-image:radial-gradient(circle, var(--paper) 3px, transparent 3.5px);
+    background-size:26px 14px;
+    background-repeat:repeat-x;
+    background-position:6px center;
+  }
+  .film::before{ top:0; }
+  .film::after{ bottom:0; }
+  .film-frame{
+    margin:20px 10px;
+    aspect-ratio:4/3;
+    border:1px solid #4A4640;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .film-frame svg{ width:60%; height:60%; }
+
+  /* ---- Ticket / form ---- */
+  .ticket-wrap{
+    padding:0 48px 80px;
+    max-width:1100px;
+    margin:0 auto;
+    display:flex;
+    justify-content:center;
+  }
+  .ticket{
+    background:var(--paper-light);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:40px 44px;
+    width:100%;
+    max-width:480px;
+    position:relative;
+  }
+  .ticket h2{
+    font-size:1.4rem;
+    margin-bottom:8px;
+  }
+  .ticket p.sub{
+    margin:0 0 24px;
+    color:#3A362F;
+    font-size:0.95rem;
+  }
+  .stamp{
+    position:absolute;
+    top:28px; right:32px;
+    border:1.5px solid var(--safelight);
+    color:var(--safelight);
+    border-radius:50%;
+    width:64px; height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:0.62rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    transform:rotate(-12deg);
+    line-height:1.15;
+  }
+  form{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  input[type="email"]{
+    flex:1 1 220px;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:2px;
+    background:#fff;
+    font-family:'Inter', sans-serif;
+    font-size:0.95rem;
+    color:var(--ink);
+  }
+  input[type="email"]:focus-visible{
+    outline:2px solid var(--fixer);
+    outline-offset:1px;
+  }
+  button{
+    padding:12px 22px;
+    border:none;
+    border-radius:2px;
+    background:var(--safelight);
+    color:#fff;
+    font-family:'Inter', sans-serif;
+    font-size:0.95rem;
+    font-weight:500;
+    cursor:pointer;
+    transition:background 0.15s ease;
+  }
+  button:hover{ background:#9c6a17; }
+  button:focus-visible{
+    outline:2px solid var(--fixer);
+    outline-offset:2px;
+  }
+
+  @media (max-width: 760px){
+    nav{ padding:20px 24px; flex-direction:column; gap:16px; }
+    .nav-links{ gap:24px; }
+    .hero{ grid-template-columns:1fr; padding:40px 24px; }
+    .ticket-wrap{ padding:0 24px 56px; }
+    .ticket{ padding:32px 24px; }
+    .stamp{ position:static; margin-bottom:16px; transform:rotate(0deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Cogni<span>fyz</span></div>
+  <ul class="nav-links">
+    <li><a href="#develop">Develop</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div>
+    <h1>Your film, our chemistry.</h1>
+    <p>We hand-process black and white and C-41 color film in small batches, three days a week, in a shared darkroom behind the old print shop on 5th. Bring a roll or reserve a bench and do it yourself.</p>
+  </div>
+  <div class="film">
+    <div class="film-frame">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="34" stroke="#E8E1CE" stroke-width="2"/>
+        <circle cx="50" cy="50" r="10" fill="#E8E1CE"/>
+        <path d="M50 16 L50 26 M50 74 L50 84 M16 50 L26 50 M74 50 L84 50" stroke="#E8E1CE" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="ticket-wrap">
+  <div class="ticket">
+    <div class="stamp">DEV<br>3 DAYS</div>
+    <h2>Reserve a bench</h2>
+    <p class="sub">Leave your email and we'll send this week's open darkroom slots.</p>
+    <form onsubmit="return false;">
+      <input type="email" placeholder="you@email.com" aria-label="Email address" required>
+      <button type="submit">Notify me</button>
+    </form>
+  </div>
+</div>
+
+<footer style="text-align:center; padding:24px; font-size:0.82rem; color:#5b6058; border-top:1px solid var(--line); margin-top:0;">
+  Built by a Web Developer Intern at Cognifyz
+</footer>
+
+</body>
+</html>
