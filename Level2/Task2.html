@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Webpage & Hamburger Navigation</title>
+  
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+
+    .header {
+      background-color: #1e293b;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    .nav-link {
+      color: #f1f5f9;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #38bdf8;
+    }
+
+   
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    
+    .grid-container {
+      display: grid;
+     
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    
+    .footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: auto;
+    }
+
+
+    @media (max-width: 992px) {
+      .grid-container {
+        
+        grid-template-columns: repeat(2, 1fr); 
+      }
+    }
+
+    
+    @media (max-width: 768px) {
+     
+      .hamburger {
+        display: flex;
+      }
+
+     
+      .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: -100%; 
+        flex-direction: column;
+        background-color: #1e293b;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s ease-in-out;
+        padding: 20px 0;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .nav-menu.active {
+        left: 0;
+      }
+
+      .nav-item {
+        margin: 15px 0;
+      }
+
+      
+      .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  
+  <header class="header">
+    <div class="container navbar">
+      <a href="#" class="logo">ResponsiveApp</a>
+
+      
+      <button class="hamburger" id="hamburger" aria-label="Toggle Navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      
+      <ul class="nav-menu" id="nav-menu">
+        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
+        <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  
+  <main class="container">
+    
+    
+    <section class="hero" id="home">
+      <h1>Responsive Design Showcase</h1>
+      <p>Resize your browser window or open Developer Tools to test how the navigation and layout adjust to different screen widths.</p>
+    </section>
+
+    
+    <section id="features">
+      <h2 style="margin-bottom: 20px;">Responsive Grid Layout</h2>
+      <div class="grid-container">
+        
+        <div class="card">
+          <h3>Desktop Mode</h3>
+          <p>On screens wider than 992px, this layout displays 3 columns side-by-side.</p>
+        </div>
+
+        <div class="card">
+          <h3>Tablet Mode</h3>
+          <p>Between 768px and 992px, CSS media queries automatically adjust this grid to 2 columns.</p>
+        </div>
+
+        <div class="card">
+          <h3>Mobile Mode</h3>
+          <p>On screens narrower than 768px, the layout collapses into 1 stacked column and enables the hamburger menu.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  
+  <footer class="footer">
+    <p>&copy; 2026 Responsive Design Task. All rights reserved.</p>
+  </footer>
+
+  
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
