@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Image Manipulation Demos</title>
+<style>
+  body {
+    font-family: sans-serif;
+    background: #f5f6fa;
+    margin: 0;
+    padding: 2rem;
+  }
+  section.demo {
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+  }
+  section.demo h2 {
+    margin-bottom: 1rem;
+  }
+  hr.divider {
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+    border: none;
+    border-top: 1px solid #ccc;
+  }
+
+
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .gallery img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+    z-index: 1;
+    position: relative;
+  }
+  .gallery img:target {
+    width: 500px;
+    height: 350px;
+    z-index: 10;
+  }
+
+
+  .slideshow-wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .slideshow {
+    position: relative;
+    width: 500px;
+    max-width: 100%;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #17181c;
+  }
+  .slideshow img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: fade 12s infinite;
+  }
+  .slideshow img:nth-child(1) { animation-delay: 0s; }
+  .slideshow img:nth-child(2) { animation-delay: 4s; }
+  .slideshow img:nth-child(3) { animation-delay: 8s; }
+
+  @keyframes fade {
+    0%   { opacity: 0; }
+    8%   { opacity: 1; }
+    33%  { opacity: 1; }
+    41%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<section class="demo">
+  <h2>1. Click a thumbnail to enlarge</h2>
+  <div class="gallery">
+    <a href="#img1"><img id="img1" src="https://picsum.photos/id/10/500/350" alt="Photo 1"></a>
+    <a href="#img2"><img id="img2" src="https://picsum.photos/id/20/500/350" alt="Photo 2"></a>
+    <a href="#img3"><img id="img3" src="https://picsum.photos/id/30/500/350" alt="Photo 3"></a>
+    <a href="#img4"><img id="img4" src="https://picsum.photos/id/40/500/350" alt="Photo 4"></a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="demo">
+  <h2>2. Auto-transitioning slideshow</h2>
+  <div class="slideshow-wrap">
+    <div class="slideshow">
+      <img src="https://picsum.photos/id/1015/500/350" alt="Slide 1">
+      <img src="https://picsum.photos/id/1025/500/350" alt="Slide 2">
+      <img src="https://picsum.photos/id/1035/500/350" alt="Slide 3">
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
